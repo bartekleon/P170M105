@@ -8,6 +8,7 @@ const SENSIBILITY = 0.01
 
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
+@onready var state := $"../State"
 
 const BOB_FREQ = 3
 const BOB_AMP = 0.08
@@ -19,6 +20,9 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if state.in_2048_game:
+		return
+
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSIBILITY)
 		camera.rotate_x(-event.relative.y * SENSIBILITY)
@@ -28,6 +32,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.interact_with_world()
 
 func _physics_process(delta: float) -> void:
+	if state.in_2048_game:
+		return
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

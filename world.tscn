@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://ch2dmi6bbvxry"]
+[gd_scene load_steps=54 format=3 uid="uid://ch2dmi6bbvxry"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_llgvr"]
 [ext_resource type="Script" path="res://state.gd" id="1_sgoev"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://j68iua7tnnnp" path="res://key_heart.tscn" id="24_ujwxr"]
 [ext_resource type="Script" path="res://key_heart.gd" id="26_c5kij"]
 [ext_resource type="Script" path="res://key_spade.gd" id="28_3tm64"]
+[ext_resource type="Script" path="res://2048.gd" id="31_q6e7b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gw3xy"]
 sky_top_color = Color(0.214072, 0.447488, 0.759065, 1)
@@ -331,3 +332,33 @@ script = ExtResource("26_c5kij")
 [node name="key_spade" parent="." instance=ExtResource("23_h5av5")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.11895, 2.98023e-10, 18.3779)
 script = ExtResource("28_3tm64")
+
+[node name="Game2048" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("31_q6e7b")
+
+[node name="GridContainer" type="GridContainer" parent="Game2048"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
