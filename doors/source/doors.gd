@@ -5,7 +5,6 @@ var is_open: bool = false
 
 func interact():
 	$AnimationPlayer.play("Take 001")
-	
 	is_open = true
 
 func is_interactable():

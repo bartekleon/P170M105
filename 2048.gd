@@ -72,7 +72,7 @@ func _input(event):
 		spawn_tile()
 		for y in range(grid_size):
 			for x in range(grid_size):
-				if grid[y][x].text == "2048":
+				if grid[y][x].text == "128":
 					state.in_2048_game = false
 					self.set_visible(false)
 					state.won_2048 = true

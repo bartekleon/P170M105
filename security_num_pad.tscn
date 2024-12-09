@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://0m0xd03v4hou"]
+
+[ext_resource type="PackedScene" uid="uid://bfykg8bby4j3r" path="res://security-key-pad/source/SecurityNumPad.fbx" id="1_sbi17"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8syvs"]
+size = Vector3(0.2, 0.0695312, 0.255674)
+
+[node name="SecurityNumPad" instance=ExtResource("1_sbi17")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="MainBody" parent="." index="0"]
+transform = Transform3D(37.6775, 0, 0, 0, -1.64693e-06, 37.6775, 0, -37.6775, -1.64693e-06, 1.27297e-09, 0.00360974, -0.00766199)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152344, 0.0113232)
+shape = SubResource("BoxShape3D_8syvs")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ch2dmi6bbvxry"]
+[gd_scene load_steps=59 format=3 uid="uid://ch2dmi6bbvxry"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_llgvr"]
 [ext_resource type="Script" path="res://state.gd" id="1_sgoev"]
@@ -31,6 +31,9 @@
 [ext_resource type="Script" path="res://key_heart.gd" id="26_c5kij"]
 [ext_resource type="Script" path="res://key_spade.gd" id="28_3tm64"]
 [ext_resource type="Script" path="res://2048.gd" id="31_q6e7b"]
+[ext_resource type="PackedScene" uid="uid://0m0xd03v4hou" path="res://security_num_pad.tscn" id="32_3s41e"]
+[ext_resource type="Script" path="res://doors2/source/door1.gd" id="32_8lvay"]
+[ext_resource type="Script" path="res://security_num_pad.gd" id="33_odrr6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gw3xy"]
 sky_top_color = Color(0.214072, 0.447488, 0.759065, 1)
@@ -117,6 +120,12 @@ size = Vector3(0.3, 8, 12.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jb471"]
 size = Vector3(0.3, 5, 2.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hqysv"]
+size = Vector3(1, 8, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4vuc"]
+size = Vector3(1, 8, 9)
 
 [node name="World" type="Node3D"]
 
@@ -306,6 +315,44 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.15, 
 mesh = SubResource("BoxMesh_jb471")
 surface_material_override/0 = SubResource("StandardMaterial3D_d5dk5")
 
+[node name="FirstRoom" type="Node" parent="Room"]
+
+[node name="InnerWall" type="MeshInstance3D" parent="Room/FirstRoom"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.1, 4, 15)
+mesh = SubResource("BoxMesh_hqysv")
+skeleton = NodePath("../../OuterWalls/MainWall4")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5dk5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/FirstRoom/InnerWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FirstRoom/InnerWall/StaticBody3D"]
+shape = SubResource("BoxShape3D_x4vuc")
+
+[node name="Wall6" type="MeshInstance3D" parent="Room/FirstRoom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.46812, 4, 10.6256)
+mesh = SubResource("BoxMesh_xuism")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5dk5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/FirstRoom/Wall6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FirstRoom/Wall6/StaticBody3D"]
+shape = SubResource("BoxShape3D_3utj3")
+
+[node name="Wall7" type="MeshInstance3D" parent="Room/FirstRoom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.55812, 4, 10.6256)
+mesh = SubResource("BoxMesh_xuism")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5dk5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/FirstRoom/Wall7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FirstRoom/Wall7/StaticBody3D"]
+shape = SubResource("BoxShape3D_ym4ti")
+
+[node name="Wall8" type="MeshInstance3D" parent="Room/FirstRoom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.51782, 5.75821, 10.6256)
+mesh = SubResource("BoxMesh_0dbp5")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5dk5")
+
 [node name="Chest2" parent="." instance=ExtResource("14_xbl4b")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 18.5, 0.5, 0)
 script = ExtResource("16_vew71")
@@ -332,6 +379,14 @@ script = ExtResource("26_c5kij")
 [node name="key_spade" parent="." instance=ExtResource("23_h5av5")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.11895, 2.98023e-10, 18.3779)
 script = ExtResource("28_3tm64")
+
+[node name="Door1" parent="." instance=ExtResource("21_luvix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50812, 0, 10.6266)
+script = ExtResource("32_8lvay")
+
+[node name="SecurityNumPad2" parent="." instance=ExtResource("32_3s41e")]
+transform = Transform3D(-3, -4.52987e-07, 1.98007e-14, 0, -1.31134e-07, -3, 4.52987e-07, -3, 1.31134e-07, -6, 2, 10.4645)
+script = ExtResource("33_odrr6")
 
 [node name="Game2048" type="Control" parent="."]
 visible = false
